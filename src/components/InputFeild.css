@@ -1,0 +1,47 @@
+.form-container {
+  width: 90%;
+  background-color: #ffff;
+  padding: 10px;
+  border-radius: 50px;
+  /* box-shadow: ; */
+  box-shadow: #181818 0px 7px 29px 0px;
+}
+
+.form {
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-input {
+  border: transparent;
+}
+
+.todo-input:focus {
+  outline: none;
+}
+
+.input-btn {
+  background-color: #c689c6;
+  border: transparent;
+  padding: 10px;
+  color: #ffff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.input-btn:hover {
+  background-color: #956d95;
+}
+
+.input-btn:active {
+  transform: scale(0.8);
+}
+
+@media (min-width: 800px) {
+  .form-container {
+    width: 50%;
+  }
+}
