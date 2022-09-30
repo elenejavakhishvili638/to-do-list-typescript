@@ -42,6 +42,14 @@
   /* gap: 2rem; */
 }
 
+.drag-active:hover {
+  background-color: #e49898;
+}
+
+.drag-complete:hover {
+  background-color: #ff6c6c;
+}
+
 @media (min-width: 800px) {
   /* .to-do-list-contianer {
     grid-template-columns: 1fr 1fr 1fr;

@@ -4,14 +4,16 @@ import {Todo} from "./model"
 import {RiDeleteBin7Fill} from "react-icons/ri"
 import {AiFillEdit} from "react-icons/ai"
 import {TiTick} from "react-icons/ti"
+import { Draggable } from 'react-beautiful-dnd'
 
 interface Props {
     todos: Todo[]
     item: Todo
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>> 
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+    index: number
 }
 
-const SingleToDo: React.FC<Props> = ({item, todos, setTodos}) => {
+const SingleToDo: React.FC<Props> = ({item, todos, setTodos, index}) => {
 
     const [edit, setEdit] = useState<boolean>(false)
     const [editText, setEditText] = useState<string>(item.todo)
@@ -37,6 +39,7 @@ const SingleToDo: React.FC<Props> = ({item, todos, setTodos}) => {
     const handleClick = (id: number) => {
         console.log(id)
         setTodos(todos.map((todo) => todo.id === id ? {...todo, isDone: !todo.isDone} : todo))
+        // setCompleted(todos.map((todo) => todo.id === id ? {...todo, isDone: !todo.isDone} : todo))
     }
 
     const handleSubmit = (event: React.FormEvent, id: number) => {
@@ -47,7 +50,9 @@ const SingleToDo: React.FC<Props> = ({item, todos, setTodos}) => {
     }
 
   return (
-    <form className='task-container' onSubmit={(event) => handleSubmit(event, item.id)}>
+    <Draggable draggableId={item.id.toString()} index={index}>
+        {(provided) => (
+    <form className='task-container' onSubmit={(event) => handleSubmit(event, item.id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
         {edit ? (
             <input ref={inputRef} className='task-input' value={editText} onChange={(event) => {setEditText(event.target.value)}} />
         ) : (
@@ -60,6 +65,8 @@ const SingleToDo: React.FC<Props> = ({item, todos, setTodos}) => {
             <span className='icon'><TiTick onClick={() => handleClick(item.id)} /></span>
         </div>
     </form>
+        )}
+    </Draggable>
   )
 }
 

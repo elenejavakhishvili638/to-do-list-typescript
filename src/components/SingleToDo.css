@@ -14,10 +14,6 @@
   transform: scale(1.03);
 }
 
-.task-list {
-  /* padding: 0px; */
-}
-
 .icon-container {
   display: flex;
   margin-left: 15px;
