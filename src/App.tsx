@@ -8,6 +8,7 @@ const App: React.FC = () => {
 
   const [toDo, setToDo] = useState<string>("")
   const [todos, setTodos] = useState<Todo[]>([])
+  // const [compelted, setCompleted] = useState
 
   const addItem = (event: React.FormEvent) => {
     event.preventDefault()
@@ -31,6 +32,7 @@ return (
   />
   <TodoList
     todos={todos}
+    setTodos={setTodos}
   />
 </div>
 );

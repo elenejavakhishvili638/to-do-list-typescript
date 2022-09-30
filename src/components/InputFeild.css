@@ -15,6 +15,7 @@
 
 .todo-input {
   border: transparent;
+  width: 100%;
 }
 
 .todo-input:focus {
